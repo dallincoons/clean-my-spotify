@@ -1,0 +1,16 @@
+<h1>Playlist</h1>
+<% @playlist.name %>
+
+Duplicates tracks:
+<ul>
+<% @duplicate_tracks.each do |track| %>
+<li>
+	<a href="/playlist/<%= track.id %>"><%= track.name %></a>
+</li>
+<% end %>
+</ul>
+<form method="POST" action="/playlist/<%= @playlistid %>/clean">
+	<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+	<input type="hidden" name="duplicate_tracks" value="<%= @duplicate_tracks.map {|track| track.id} %>">
+	<button type="submit">Remove Duplicates</button>
+</form>
