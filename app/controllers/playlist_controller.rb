@@ -16,7 +16,6 @@ class PlaylistController < ApplicationController
 			raw_tracks = playlist.tracks(limit: 100, offset: offset)
 			tracks = []
 			while raw_tracks.length > 0
-				puts raw_tracks.length
 				new_tracks = raw_tracks.map do |track|
 					Track.new(track.id, track.name)
 				end

@@ -8,11 +8,16 @@ Bundler.require(*Rails.groups)
 
 module Alfred
   class Application < Rails::Application
+
+    config.before_configuration do
+      env_file = File.join(Rails.root, 'config', 'application.yml')
+      YAML.load(File.open(env_file)).each do |key, value|
+        ENV[key.to_s] = value
+      end if File.exists?(env_file)
+    end
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
-
-    RSpotify.authenticate("5020ab65e17441d69837c43c1d82d791", "3e37707325b44247895d80abc9c4e89a")
-
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
