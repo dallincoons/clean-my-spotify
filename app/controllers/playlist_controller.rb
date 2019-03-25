@@ -14,17 +14,14 @@ class PlaylistController < ApplicationController
 
 			offset = 0
 			raw_tracks = playlist.tracks(limit: 100, offset: offset)
-			tracks = []
+			tracks = TrackCollection.new
 			while raw_tracks.length > 0
-				new_tracks = raw_tracks.map do |track|
-					Track.new(track.id, track.name)
-				end
-				tracks.concat(new_tracks)
+				tracks.add_raw_tracks(raw_tracks)
 				offset += 100
 				raw_tracks = playlist.tracks(limit: 100, offset: offset)
 			end
 
-			duplicate_tracks = DuplicateTracks.new(tracks)
+			duplicate_tracks = DuplicateTracks.new(tracks.all)
 
 		 @playlist = playlist
 		 @duplicate_tracks = duplicate_tracks.find
