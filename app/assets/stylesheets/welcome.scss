@@ -1,3 +1,168 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+.welcome-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.welcome-text {
+  padding-left: 4rem;
+}
+
+.welcome-text-heading {
+  font-size: 4rem;
+  padding: 2rem 2rem 2rem 0;
+}
+
+.welcome-callout-text {
+  //background: #12e4d5;
+  display: block;
+  margin-bottom: 1rem;
+}
+.callout-1 {
+  position: absolute;
+}
+
+.callout-2 {
+  position: absolute;
+}
+
+.callout-rect-1 {
+  position: relative;
+  right: 3rem;
+  top: .2rem;
+  z-index: -1;
+}
+
+.callout-rect-2 {
+  position: relative;
+  right: 1rem;
+  top: .2rem;
+  z-index: -1;
+}
+
+.cls-rect{fill:#12e4d5;}
+
+.welcome-button {
+  background: #12e4d5;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 2rem;
+  padding: 1rem 1.5rem;
+  display: inline-block;
+  transform: perspective(1px) translateZ(0);
+  position: relative;
+  transition-property: color;
+  transition-duration: 0.5s;
+}
+
+/* Bounce To Right */
+.welcome-button:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #353a85;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition-property: transform;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-out;
+}
+.welcome-button:hover, .welcome-button:focus, .welcome-button:active {
+  color: white;
+}
+.welcome-button:hover:before, .welcome-button:focus:before, .welcome-button:active:before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+
+.welcome-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.welcome-svg {
+  width: 80%;
+}
+
+.cls-1{isolation:isolate;}
+.cls-2{mix-blend-mode:screen;}
+.cls-3{fill:#12e4d5;}
+.cls-17,.cls-18,.cls-19,.cls-20,.cls-21,.cls-22,.cls-23,.cls-24,.cls-25,.cls-26,.cls-27,.cls-28,.cls-29,.cls-30,.cls-31,.cls-32,.cls-33,.cls-34,.cls-35,.cls-36,.cls-37,.cls-38,.cls-39,.cls-4,.cls-40,.cls-41,.cls-42,.cls-43,.cls-44,.cls-45,.cls-46,.cls-47,.cls-48,.cls-49,.cls-50,.cls-51,.cls-52,.cls-53,.cls-54,.cls-55,.cls-56,.cls-57,.cls-58,.cls-59,.cls-60,.cls-61,.cls-62,.cls-63,.cls-64,.cls-65,.cls-66,.cls-67{fill:none;}
+.cls-5{fill:#292949;}
+.cls-6{fill:#31415d;}
+.cls-7{fill:#c8cacc;}
+.cls-8{fill:#8cabef;}
+.cls-9{fill:#f6f6f7;}
+.cls-10{fill:#6f95d8;}
+.cls-11{fill:#353a85;}
+.cls-12{fill:#d89a36;}
+.cls-13{fill:#742d36;}
+.cls-14{fill:#cc8656;}
+.cls-15{fill:#f0dac0;}
+.cls-16{fill:#fff;}
+.cls-17,.cls-18,.cls-19,.cls-20,.cls-21,.cls-22,.cls-23,.cls-24,.cls-25,.cls-26,.cls-27,.cls-28,.cls-29,.cls-30,.cls-31,.cls-32,.cls-33,.cls-34,.cls-35,.cls-36,.cls-37,.cls-38,.cls-39,.cls-40,.cls-41,.cls-42,.cls-43,.cls-44,.cls-45,.cls-46,.cls-47,.cls-48,.cls-49,.cls-50,.cls-51,.cls-52,.cls-53,.cls-54,.cls-55,.cls-56,.cls-57,.cls-58,.cls-59,.cls-60,.cls-61,.cls-62,.cls-63,.cls-64,.cls-65,.cls-66,.cls-67{stroke:#000;stroke-miterlimit:10;stroke-width:1.39px;}
+.cls-18{stroke-dasharray:19.76 19.76;}
+.cls-19{stroke-dasharray:16.91 16.91;}
+.cls-20{stroke-dasharray:18.09 18.09;}
+.cls-21{stroke-dasharray:16.07 16.07;}
+.cls-22{stroke-dasharray:16.08 16.08;}
+.cls-23{stroke-dasharray:15.96 15.96;}
+.cls-24{stroke-dasharray:17.1 17.1;}
+.cls-25{stroke-dasharray:12.82 12.82;}
+.cls-26{stroke-dasharray:19.74 19.74;}
+.cls-27{stroke-dasharray:11.23 11.23;}
+.cls-28{stroke-dasharray:16.81 16.81;}
+.cls-29{stroke-dasharray:16.94 16.94;}
+.cls-30{stroke-dasharray:15.1 15.1;}
+.cls-31{stroke-dasharray:15.1 15.1;}
+.cls-32{stroke-dasharray:15.1 15.1;}
+.cls-33{stroke-dasharray:16.5 16.5;}
+.cls-34{stroke-dasharray:16.72 16.72;}
+.cls-35{stroke-dasharray:15.19 15.19;}
+.cls-36{stroke-dasharray:16.83 16.83;}
+.cls-37{stroke-dasharray:15.27 15.27;}
+.cls-38{stroke-dasharray:9 9;}
+.cls-39{stroke-dasharray:9 9;}
+.cls-40{stroke-dasharray:9 9;}
+.cls-41{stroke-dasharray:9 9;}
+.cls-42{stroke-dasharray:9 9;}
+.cls-43{stroke-dasharray:9 9;}
+.cls-44{stroke-dasharray:9 9;}
+.cls-45{stroke-dasharray:9 9;}
+.cls-46{stroke-dasharray:9 9;}
+.cls-47{stroke-dasharray:9 9;}
+.cls-48{stroke-dasharray:9 9;}
+.cls-49{stroke-dasharray:9 9;}
+.cls-50{stroke-dasharray:15.1 15.1;}
+.cls-51{stroke-dasharray:15.1 15.1;}
+.cls-52{stroke-dasharray:15.1 15.1;}
+.cls-53{stroke-dasharray:11.12 11.12;}
+.cls-54{stroke-dasharray:11.12 11.12;}
+.cls-55{stroke-dasharray:14.2 14.2;}
+.cls-56{stroke-dasharray:14.23 14.23;}
+.cls-57{stroke-dasharray:18.27 18.27;}
+.cls-58{stroke-dasharray:17.84 17.84;}
+.cls-59{stroke-dasharray:13.39 13.39;}
+.cls-60{stroke-dasharray:8.57 8.57;}
+.cls-61{stroke-dasharray:17.6 17.6;}
+.cls-62{stroke-dasharray:15.13 15.13;}
+.cls-63{stroke-dasharray:19.68 19.68;}
+.cls-64{stroke-dasharray:17.51 17.51;}
+.cls-65{stroke-dasharray:15.25 15.25;}
+.cls-66{stroke-dasharray:11.25 11.25;}
+.cls-67{stroke-dasharray:13.11 13.11;}
