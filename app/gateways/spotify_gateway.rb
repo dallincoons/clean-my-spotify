@@ -14,17 +14,17 @@ class SpotifyGateway
 		userid = @spotify_user.id
 		playlist = RSpotify::Playlist.find(userid, id)
 
-		tracks = playlist.tracks.map do |track|
+		playlist.tracks.map do |track|
 			Track.new('id', track.name)
 		end
-
-		tracks
 	end
 
 	def remove_duplicate_tracks(playlistid, ids)
 		playlist = RSpotify::Playlist.find(@spotify_user.id, playlistid)
-		tracks = RSpotify::Track.find(ids)
-		playlist.remove_tracks!(tracks)
-		playlist.add_tracks!(tracks)
+		ids.in_groups_of(50, false) { |ids_slice|
+			tracks = RSpotify::Track.find(Array.wrap(ids_slice))
+			playlist.remove_tracks!(tracks)
+			playlist.add_tracks!(tracks)
+		}
 	end
 end
