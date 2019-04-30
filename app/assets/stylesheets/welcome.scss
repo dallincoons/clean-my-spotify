@@ -46,8 +46,10 @@
   top: .2rem;
   z-index: -1;
 }
-
-.cls-rect{fill:#12e4d5;}
+.cls-rect {
+  height: 67px;
+  fill: #12e4d5;
+}
 
 .welcome-button {
   background: #12e4d5;
@@ -166,3 +168,49 @@
 .cls-65{stroke-dasharray:15.25 15.25;}
 .cls-66{stroke-dasharray:11.25 11.25;}
 .cls-67{stroke-dasharray:13.11 13.11;}
+
+
+@media (max-width: 1400px) {
+  .welcome-text-heading {
+    font-size: 3.5rem;
+  }
+
+  .welcome-button {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 1290px) {
+  .rect-wrapper {
+    width: 25rem;
+  }
+}
+
+@media (max-width: 1100px) {
+ .welcome-wrapper {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  justify-content: center;
+ }
+
+ .welcome-text {
+  width: 40%;
+  font-size: 4rem;
+ }
+
+ .welcome-image {
+  display: none;
+ }
+}
+@media (max-width: 850px) {
+  .welcome-text {
+    width: 60%;
+  }
+}
+
+@media (max-width: 670px) {
+  .welcome-text {
+    width: 70%;
+    padding: 0;
+  }
+}

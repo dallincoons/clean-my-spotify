@@ -5,13 +5,19 @@
     <h1 class="welcome-text-heading">
     Quickly & Easily
     <span class="welcome-callout-text callout-1">Remove</span>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 418 67" class="callout-rect-1">
-      <rect class="cls-rect" width="418" height="67"/>
-    </svg>
+    <div class="rect-wrapper">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 418 67" class="callout-rect-1">
+        <rect class="cls-rect" width="418" height="67"/>
+      </svg>
+    </div>
+
     <span class="welcome-callout-text callout-2">Duplicates</span>
+    <div class="rect-wrapper">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 418 67" class="callout-rect-2">
         <rect class="cls-rect" width="418" height="67"/>
       </svg>
+    </div>
+
     from your Spotify Playlists.
     </h1>
     <%= link_to 'Sign in with Spotify', '/auth/spotify', :class => 'welcome-button' %>
