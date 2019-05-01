@@ -1,3 +1,6 @@
+body {
+  margin: 0;
+}
 .playlists-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -65,4 +68,50 @@
   transform: scaleX(1);
   -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
   transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
+
+.blob {
+  display: none;
+}
+
+@media (max-width: 1210px) {
+  .playlists-wrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 2fr;
+    width: 100vw;
+  }
+
+  .playlists-cta {
+    grid-template-rows: 1fr;
+    justify-items: left;
+    background: none;
+  }
+
+  .playlists-cta-text {
+    grid-row:1;
+    padding-left: 2rem;
+    position: relative;
+  }
+
+  .blob {
+    display: inline-block;
+    z-index: -1;
+    width: 60%;
+    position: absolute;
+    right: 0;
+  }
+
+  .cls-blob {
+    fill:#12e4d5;
+    }
+
+  .playlists-list-wrapper {
+    overflow: visible;
+  }
+}
+
+@media (max-width: 670px) {
+  .blob {
+    width: 90%;
+  }
 }
