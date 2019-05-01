@@ -191,21 +191,38 @@
   grid-template-columns: 1fr;
   justify-items: center;
   justify-content: center;
+  height: 100vh;
  }
 
  .welcome-text {
-  width: 40%;
-  font-size: 4rem;
+  width: 70%;
+ }
+
+ .welcome-text-heading {
+  font-size: 6rem;
+ }
+
+  .callout-rect-1 {
+    position: relative;
+    right: 3rem;
+    top: .2rem;
+    height: 80px;
+  }
+
+  .callout-rect-2 {
+    position: relative;
+    right: 1rem;
+    top: .2rem;
+    height: 90px;
+  }
+
+ .welcome-button {
+  font-size: 2.5rem;
  }
 
  .welcome-image {
   display: none;
  }
-}
-@media (max-width: 850px) {
-  .welcome-text {
-    width: 60%;
-  }
 }
 
 @media (max-width: 670px) {
