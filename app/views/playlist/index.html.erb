@@ -1,7 +1,16 @@
-<ul>
-<% @playlists.each do |playlist| %>
-<li>
-	<a href="/playlist/<%= playlist.id %>"><%= playlist.name %></a>
-</li>
-<% end %>
-</ul>
+<div class="playlists-wrapper">
+  <div class="playlists-cta">
+    <h2 class="playlists-cta-text">Click on a playlist to see if it contains any duplicated songs.</h2>
+  </div>
+  <div class="playlists-list-wrapper">
+    <ul class="playlists-list">
+      <% @playlists.each do |playlist| %>
+        <li class="playlist">
+          <a href="/playlist/<%= playlist.id %>"><%= playlist.name %></a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+

@@ -1,3 +1,68 @@
-// Place all the styles related to the playlist controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.playlists-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+}
+
+.playlists-cta {
+  background: url("/images/blob.svg");
+  background-size: cover;
+  display: grid;
+  grid-template-rows: 1fr 2fr 1fr;
+  justify-items: center;
+}
+
+.playlists-cta-text {
+  font-weight: 400;
+  font-size: 3rem;
+  width: 60%;
+  grid-row: 2;
+}
+
+
+.playlists-list-wrapper {
+  background: #000E0F;
+  overflow: scroll;
+}
+
+.playlists-list {
+  list-style: none;
+}
+
+.playlist {
+  padding: .5rem 0 .5rem 0;
+  transform: perspective(1px) translateZ(0);
+  position: relative;
+  transition-property: color;
+  transition-duration: 0.5s;
+}
+
+.playlist a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.playlist:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: -2rem;
+  right: 0;
+  bottom: 0;
+  background: #12e4d5;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition-property: transform;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-out;
+}
+.playlist:hover, .playlist:focus, .playlist:active {
+  color: white;
+}
+.playlist:hover:before, .playlist:focus:before, .playlist:active:before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+  transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
+}
