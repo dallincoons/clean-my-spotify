@@ -74,7 +74,7 @@ body {
   display: none;
 }
 
-@media (max-width: 1210px) {
+@media (max-width: 1000px) {
   .playlists-wrapper {
     grid-template-columns: 1fr;
     grid-template-rows: auto 2fr;
@@ -91,6 +91,8 @@ body {
     grid-row:1;
     padding-left: 2rem;
     position: relative;
+    font-size: 5rem;
+    width: 90%;
   }
 
   .blob {
@@ -108,7 +110,13 @@ body {
   .playlists-list-wrapper {
     overflow: visible;
   }
+
+  .playlist {
+    font-size: 4rem;
+    padding: 2rem 0 2rem 0;
+  }
 }
+
 
 @media (max-width: 670px) {
   .blob {
@@ -246,7 +254,7 @@ body {
   opacity: .6;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1000px) {
   .duplicates-wrapper {
     grid-template-columns: 1fr;
     justify-items: center;
@@ -254,9 +262,28 @@ body {
     height: auto;
   }
 
+  .playlist-title {
+    font-size: 5rem;
+  }
+
+  .duplicate-title {
+    font-size: 3.5rem;
+  }
+
+  .duplicates {
+    font-size: 3rem;
+    padding: 1.5rem 0 1.5rem 0;
+    font-weight: 300;
+  }
+
+  .remove-button {
+    font-size: 3rem;
+  }
+
   .duplicate-actions {
     position: relative;
-    margin-top: 3rem;
+    font-size: 2.5rem;
+    margin-top: 5rem;
   }
 
   .duplicates-image {
