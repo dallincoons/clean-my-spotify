@@ -10,14 +10,13 @@ class TrackCollection
     @tracks.concat(new_tracks)
   end
 
-  def get_playlist_tracks(playlist)
-      offset = 0
+  def get_playlist_tracks(playlist, offset = 1)
       raw_tracks = playlist.tracks(limit: 100, offset: offset)
-      while raw_tracks.length > 0
+      if raw_tracks.length > 0
         self.add_raw_tracks(raw_tracks)
-        offset += 100
-        raw_tracks = playlist.tracks(limit: 100, offset: offset)
+        self.get_playlist_tracks(playlist, offset += 100)
       end
+      @tracks
   end
 
   def all
