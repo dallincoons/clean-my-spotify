@@ -1,6 +1,6 @@
 class TrackCollectionTest < ActionDispatch::IntegrationTest
   test "it builds track collection" do
-      track_collection = TrackCollection.new
+      track_collection = TrackCollection.new('123')
 
       track_collection.get_playlist_tracks(PlaylistMock.new)
 

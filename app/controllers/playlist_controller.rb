@@ -12,14 +12,17 @@ class PlaylistController < ApplicationController
 
 		 playlist = RSpotify::Playlist.find(RSpotify::User.new(session[:spotify_auth]).id, @playlistid)
 
-		 tracks = TrackCollection.new
+		 tracks = TrackCollection.new(playlist.id)
 
-		 tracks.get_playlist_tracks(playlist)
-
-		 duplicate_tracks = DuplicateTracks.new(tracks.all)
+		 if playlist.total != tracks.count + 1
+		 		tracks.clear_cache
+			  tracks.get_playlist_tracks(playlist)
+     end
 
 		 @playlist = playlist
-		 @duplicate_tracks = duplicate_tracks.find
+		 @duplicate_tracks =  tracks.duplicates.map do |song_id|
+		 		Track.new(song_id, $redis.hget(song_id, 'name'))
+		 end
 	end
 
 	def clean
