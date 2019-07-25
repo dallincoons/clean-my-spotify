@@ -17,6 +17,6 @@ describe 'Duplicates across playlists' do
 
       duplicates = DuplicatesAcrossPlaylists.new([playlist1, playlist2, playlist3])
 
-      expect(duplicates.get()).to match_array(['abc' => ['123', '456'], 'def' => ['123', '789'], 'ghi' => ['123'] ])
+      expect(duplicates.get()).to match_array([["abc", ["123", "456"]], ["def", ["123", "789"]], ["ghi", ["123"]]])
   end
 end

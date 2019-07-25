@@ -4,19 +4,14 @@ require 'rspotify'
 class SpotifyGateway
 	def initialize(auth)
 		@spotify_user = RSpotify::User.new(auth)
-	end	
+	end
 
 	def get_playlists
 		@spotify_user.playlists(limit: 50)
 	end
 
-	def get_playlist_tracks(id)
-		userid = @spotify_user.id
-		playlist = RSpotify::Playlist.find(userid, id)
-
-		playlist.tracks.map do |track|
-			Track.new('id', track.name)
-		end
+	def get_playlist_tracks(playlistid)
+		RSpotify::Playlist.find(@spotify_user.id, playlistid)
 	end
 
 	def remove_duplicate_tracks(playlistid, ids)

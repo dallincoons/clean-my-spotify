@@ -1,14 +1,24 @@
 class TrackCollection
+  MAX_LIMIT = 100
+
   @playlist_id
   @playlist_cache
   @song_cache
   @track = []
 
-  def initialize(playlist_id)
-    @playlist_id = playlist_id
-    @playlist_cache = PlaylistCache.new(@playlist_id)
+  def initialize(playlist)
+    @playlist = playlist
+    @playlist_cache = PlaylistCache.new(@playlist.id)
     @song_cache = SongCache.new
     @tracks = []
+  end
+
+  def hydrate
+    if @playlist.total != self.count + 1
+      self.clear_cache
+      self.get_playlist_tracks
+    end
+    self
   end
 
   def self.add_raw_tracks(raw_tracks)
@@ -18,13 +28,13 @@ class TrackCollection
     @tracks.concat(new_tracks)
   end
 
-  def get_playlist_tracks(playlist, offset = 1)
-      raw_tracks = playlist.tracks(limit: 100, offset: offset)
+  def get_playlist_tracks(offset = 1)
+      raw_tracks = @playlist.tracks(limit: self.MAX_LIMIT, offset: offset)
       if raw_tracks.length > 0
         @song_cache.add_tracks(raw_tracks)
 
         @playlist_cache.add_tracks(raw_tracks)
-        self.get_playlist_tracks(playlist, offset += 100)
+        self.get_playlist_tracks(offset += self.MAX_LIMIT)
       end
       @tracks
   end

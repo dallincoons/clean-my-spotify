@@ -10,14 +10,11 @@ class PlaylistController < ApplicationController
 	def show
 		 @playlistid = params[:id]
 
-		 playlist = RSpotify::Playlist.find(RSpotify::User.new(session[:spotify_auth]).id, @playlistid)
+		 spotify = SpotifyGateway.new(session[:spotify_auth])
 
-		 tracks = TrackCollection.new(playlist.id)
+		 playlist = spotify.get_playlist_tracks(@playlistid)
 
-		 if playlist.total != tracks.count + 1
-		 		tracks.clear_cache
-			  tracks.get_playlist_tracks(playlist)
-     end
+		 tracks = TrackCollection.new(playlist).hydrate
 
 		 @playlist = playlist
 		 @duplicate_tracks =  tracks.duplicates.map do |song_id|
