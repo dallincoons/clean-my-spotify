@@ -29,12 +29,12 @@ class TrackCollection
   end
 
   def get_playlist_tracks(offset = 1)
-      raw_tracks = @playlist.tracks(limit: self.MAX_LIMIT, offset: offset)
+      raw_tracks = @playlist.tracks(limit: TrackCollection::MAX_LIMIT, offset: offset)
       if raw_tracks.length > 0
         @song_cache.add_tracks(raw_tracks)
 
         @playlist_cache.add_tracks(raw_tracks)
-        self.get_playlist_tracks(offset += self.MAX_LIMIT)
+        self.get_playlist_tracks(offset += TrackCollection::MAX_LIMIT)
       end
       @tracks
   end
