@@ -74,6 +74,35 @@ body {
   display: none;
 }
 
+.loading-screen {
+  display: grid;
+  justify-items: center;
+}
+
+.loading-title {
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+.loading-record-wrapper {
+  display: grid;
+  justify-items: center;
+}
+
+.loading-record {
+  width: 50%;
+  animation: spin 3s ease-in-out infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (max-width: 1000px) {
   .playlists-wrapper {
     grid-template-columns: 1fr;
@@ -252,6 +281,27 @@ body {
   justify-items: center;
   align-items: center;
   opacity: .6;
+}
+
+.cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10,
+.cls-11, .cls-13, .cls-13, .cls-14, .cls-15, .cls-16,
+.cls-17, .cls-19, .cls-19, .cls-20, .cls-21, .cls-22,
+.cls-23, .cls-24, .cls-25, .cls-26, .cls-27, .cls-28,
+.cls-29, .cls-30, .cls-31, .cls-32, .cls-33, .cls-34,
+.cls-35, .cls-36, .cls-37, .cls-38, .cls-39, .cls-40,
+.cls-41, .cls-42, .cls-43, .cls-44, .cls-45, .cls-46,
+.cls-47, .cls-48, .cls-49, .cls-50, .cls-51, .cls-52,
+.cls-53, .cls-54 {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 8s linear infinite;
+
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 @media (max-width: 1000px) {

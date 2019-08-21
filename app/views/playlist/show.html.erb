@@ -3,7 +3,7 @@
     <h2 class="playlist-title">
       <%= @playlist.name %>
     </h2>
-
+  <% if @duplicate_tracks.length > 0 %>
     <div>
       <h3 class="duplicate-title">Duplicates:</h3>
       <ul class="duplicates-list">
@@ -16,13 +16,21 @@
     </div>
 
     <div>
+
       <form method="POST" action="/playlist/<%= @playlistid %>/clean">
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <input type="hidden" name="duplicate_tracks" value="<%= @duplicate_tracks.map {|track| track.id} %>">
         <button type="submit" class="remove-button">Remove Duplicates</button>
       </form>
 
-      </div>
+
+    </div>
+
+
+
+    <% else %>
+      <h1>All clean and stuf</h1>
+    <% end %>
 
     <div class="duplicate-actions">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48.5 32.71" class="arrow-svg">
@@ -46,7 +54,8 @@
           .cls-2{mix-blend-mode:screen;}
           .cls-3{fill:#12e4d5;}
           .cls-10,.cls-11,.cls-12,.cls-13,.cls-14,.cls-15,.cls-16,.cls-17,.cls-18,.cls-19,.cls-20,.cls-21,.cls-22,.cls-23,.cls-24,.cls-25,.cls-26,.cls-27,.cls-28,.cls-29,.cls-30,.cls-31,.cls-32,.cls-33,.cls-34,.cls-35,.cls-36,.cls-37,.cls-38,.cls-39,.cls-4,.cls-40,.cls-41,.cls-42,.cls-43,.cls-44,.cls-45,.cls-46,.cls-47,.cls-48,.cls-49,.cls-5,.cls-50,.cls-51,.cls-52,.cls-53,.cls-54,.cls-6,.cls-7,.cls-8,.cls-9{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:1.39px;}
-          .cls-5{stroke-dasharray:19.76 19.76;}.cls-6{stroke-dasharray:16.91 16.91;}
+          .cls-5{stroke-dasharray:19.76 19.76;}
+          .cls-6{stroke-dasharray:16.91 16.91;}
           .cls-7{stroke-dasharray:18.09 18.09;}
           .cls-8{stroke-dasharray:16.07 16.07;}
           .cls-9{stroke-dasharray:16.08 16.08;}
