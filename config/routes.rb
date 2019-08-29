@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get '/auth/spotify/callback', to: 'users#spotify'
   get '/playlists', to: 'playlist#index'
   get '/playlist/:id', to: 'playlist#show'
-  post '/playlist/:id/clean', to: 'playlist#clean'
+  get '/playlist/:id/duplicates', to: 'duplicate_tracks#show'
+  post '/playlist/:id/duplicates', to: 'duplicate_tracks#delete'
   root 'welcome#index'
 end

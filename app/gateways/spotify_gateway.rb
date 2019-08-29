@@ -10,7 +10,7 @@ class SpotifyGateway
 		@spotify_user.playlists(limit: 50)
 	end
 
-	def get_playlist_tracks(playlistid)
+	def get_playlist(playlistid)
 		RSpotify::Playlist.find(@spotify_user.id, playlistid)
 	end
 

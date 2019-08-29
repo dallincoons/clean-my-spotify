@@ -1,6 +1,9 @@
 body {
   margin: 0;
 }
+
+[v-cloak] { display:none; }
+
 .playlists-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;

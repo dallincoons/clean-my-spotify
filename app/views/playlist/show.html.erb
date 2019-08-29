@@ -1,36 +1,30 @@
-<div class="duplicates-wrapper">
+<div class="duplicates-wrapper" id="playlist-page" v-cloak>
   <div class="duplicates-section-wrapper">
     <h2 class="playlist-title">
       <%= @playlist.name %>
     </h2>
-  <% if @duplicate_tracks.length > 0 %>
-    <div>
-      <h3 class="duplicate-title">Duplicates:</h3>
-      <ul class="duplicates-list">
-        <% @duplicate_tracks.each do |track| %>
-          <li class="duplicates">
-            <a href="/playlist/<%= track.id %>"><%= track.name %></a>
-          </li>
-        <% end %>
+  <div v-if="duplicate_tracks.length">
+          <div>
+            <h3 class="duplicate-title">Duplicates:</h3>
+            <ul class="duplicates-list">
+              <li v-for="track in duplicate_tracks" class="duplicates">
+                <a :href="'/playlist/' + track.id">{{ track.name }}</a>
+              </li>
       </ul>
     </div>
 
     <div>
 
-      <form method="POST" action="/playlist/<%= @playlistid %>/clean">
         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        <input type="hidden" name="duplicate_tracks" value="<%= @duplicate_tracks.map {|track| track.id} %>">
-        <button type="submit" class="remove-button">Remove Duplicates</button>
-      </form>
-
+        <input type="hidden" id="playlist_id" value="<%= @playlistid %>">
+        <button type="submit" class="remove-button" @click="cleanPlaylist()">Remove Duplicates</button>
 
     </div>
 
-
-
-    <% else %>
-      <h1>All clean and stuf</h1>
-    <% end %>
+  </div>
+  <div v-else>
+      <h1>All clean!</h1>
+  </div>
 
     <div class="duplicate-actions">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48.5 32.71" class="arrow-svg">
@@ -40,9 +34,6 @@
       <a href="/playlists">Return to Playlists</a>
 
     </div>
-
-
-
   </div>
 
   <div class="duplicates-image">
@@ -289,3 +280,57 @@
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+
+<script>
+    let setupCSRFToken = () => {
+        const csrfToken = document.querySelector("meta[name=csrf-token]").content;
+        axios.defaults.headers.common['X-CSRF-Token'] = csrfToken
+    };
+    window.addEventListener('DOMContentLoaded', setupCSRFToken)
+</script>
+<script>
+    new Vue({
+      el : '#playlist-page',
+
+      data() {
+        return {
+          playlist_id : '',
+          duplicate_tracks : [],
+        }
+      },
+
+      created() {
+          this.playlistid = document.getElementById('playlist_id').value;
+
+          this.getDuplicates();
+      },
+
+      methods : {
+          getDuplicates() {
+              let url = `/playlist/${this.playlistid}/duplicates`;
+              axios.get(url).then((response) => {
+                  //possibly put animation here?
+                  this.duplicate_tracks = response.data;
+              });
+          },
+
+          cleanPlaylist() {
+            // start animation
+
+            let url = `/playlist/${this.playlistid}/duplicates`;
+            let trackIds = this.duplicate_tracks.map((track) => track.id);
+            axios.post(url, {'duplicate_tracks' : trackIds, 'id' : this.playlistid}).then((response) => {
+              this.getDuplicates();
+            }).finally(() => {
+               // stop animation
+            });
+        }
+      }
+    });
+</script>
+
+<style>
+
+</style>
